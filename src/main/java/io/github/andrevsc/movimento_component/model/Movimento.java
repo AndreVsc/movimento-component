@@ -1,14 +1,14 @@
 package io.github.andrevsc.movimento_component.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "movimento")
 public class Movimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_movimento")
-    private Long idMovimento;
+    private Long id;
     
     @Column(nullable = false, unique = true, length = 50)
     private String nome;
@@ -27,9 +27,16 @@ public class Movimento {
     @Column(name = "pp_max", nullable = false)
     private Integer ppMax;
     
-    public Movimento() {}
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    
+    // Construtores
+    public Movimento() {
+        this.createdAt = LocalDateTime.now();
+    }
     
     public Movimento(String nome, String tipo, String categoria, Integer poder, Integer precisao, Integer ppMax) {
+        this();
         this.nome = nome;
         this.tipo = tipo;
         this.categoria = categoria;
@@ -38,8 +45,9 @@ public class Movimento {
         this.ppMax = ppMax;
     }
     
-    public Long getIdMovimento() { return idMovimento; }
-    public void setIdMovimento(Long idMovimento) { this.idMovimento = idMovimento; }
+    // Getters e Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -58,4 +66,20 @@ public class Movimento {
     
     public Integer getPpMax() { return ppMax; }
     public void setPpMax(Integer ppMax) { this.ppMax = ppMax; }
+    
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    
+    @Override
+    public String toString() {
+        return "Movimento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", poder=" + poder +
+                ", precisao=" + precisao +
+                ", ppMax=" + ppMax +
+                '}';
+    }
 }

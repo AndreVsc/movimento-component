@@ -12,7 +12,7 @@
 	<!-- INFORMAÇÕES DO SEU COMPONENTE -->
 	<groupId>io.github.andrevsc</groupId>
 	<artifactId>movimento-component</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<packaging>jar</packaging>
 	<name>movimento-component</name>
 	<description>Componente Spring Boot para gerenciamento de movimentos de Pokemon</description>
